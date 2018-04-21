@@ -4,3 +4,4 @@
 2. update gitignore
 3. Add  to Codeclimate
   --just add to repository https://codeclimate.com/
+4. Add to Circle Ci https://circleci.com/setup-project/gh/Jonas-Args/rails5-template
