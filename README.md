@@ -7,3 +7,4 @@
 4. Add to Circle Ci https://circleci.com/setup-project/gh/Jonas-Args/rails5-template
 5. Add rspec https://github.com/rspec/rspec-rails
 6. Add ruby gemset and version
+7. Allow cross origin request
