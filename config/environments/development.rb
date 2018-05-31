@@ -31,6 +31,15 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # config.action_mailer.smtp_settings = {
+  #   address: ENV['SPARKPOST_SMTP_ADDRESS'],
+  #   port: 587,
+  #   user_name: ENV['SPARKPOST_USERNAME'],
+  #   password: ENV['SPARKPOST_API_KEY'],
+  #   enable_starttls_auto: true
+  # }
+  # config.action_mailer.default_url_options = { host: ENV['SPARKPOST_SMTP_DOMAIN'] }
+  config.action_mailer.delivery_method = :letter_opener
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

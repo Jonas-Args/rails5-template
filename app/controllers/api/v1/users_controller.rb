@@ -32,7 +32,7 @@ class Api::V1::UsersController < ApiController
     user = User.find_by_email(params[:email].downcase)
     if user.present?
       user.set_forgot_token
-      # PasswordMailer.forgot_password(@obj.set_forgot_token).deliver
+      RedisJobPusher.push_send_forgot_password_email(user.id)
       render_success
     else
       fail ApiExceptions::InvalidEmailError

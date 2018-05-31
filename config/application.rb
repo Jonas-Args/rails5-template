@@ -26,6 +26,7 @@ module Rails5Template
     # -- all .rb files in that directory are automatically loaded.
 
     # Don't generate system test files.
+    config.active_job.queue_adapter = :sidekiq
     config.generators.system_tests = nil
     config.middleware.insert_before 0, Rack::Cors do
       allow do

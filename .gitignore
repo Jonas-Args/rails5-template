@@ -20,3 +20,7 @@
 
 #additional ignore settings
 config/database.yml
+config/*.yml
+
+# Ignore application configuration
+/config/application.yml

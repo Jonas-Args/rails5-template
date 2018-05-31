@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :invite_tokens,  class_name: "Token::InviteToken", :dependent => :destroy
   has_many :forgot_tokens,  class_name: "Token::ForgotToken", :dependent => :destroy
 
+  after_create :send_welcome_email
+
   def self.find_by_credentials(credentials)
     user = find_by(email: credentials.fetch(:email, '')) if credentials[:email].present?
   user = find_by(username: credentials.fetch(:username, '')) if credentials[:username].present?
@@ -24,9 +26,17 @@ class User < ApplicationRecord
   end
 
   def reset_password(pw)
-    self.forgot_tokens.destroy_all
+    self.forgot_tokens.update_all(active:false)
     return true if self.update!(password: pw)
     false
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def send_welcome_email
+    RedisJobPusher.push_send_welcome_email(self.id)
   end
 
 end

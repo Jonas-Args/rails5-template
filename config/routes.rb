@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   api vendor_string: "myvendor", default_version: 1 do
@@ -16,4 +18,5 @@ Rails.application.routes.draw do
     end
     root to: "application#index"
   end
+  mount Sidekiq::Web => '/sidekiq'
 end
