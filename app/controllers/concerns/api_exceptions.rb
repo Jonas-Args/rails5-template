@@ -75,5 +75,10 @@ module ApiExceptions
       render json: {error: "You need to renew your password"}, status: 411
     end
 
+    class NotDriverError < StandardError; end
+    rescue_from NotDriverError do
+      render json: {error: "Access is not allowed"}, status: :unauthorized
+    end
+
   end
 end

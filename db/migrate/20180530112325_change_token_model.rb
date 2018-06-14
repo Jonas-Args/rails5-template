@@ -7,6 +7,6 @@ class ChangeTokenModel < ActiveRecord::Migration[5.1]
   def down
     add_column :tokens, :tokenable_id, :integer
     add_column :tokens, :tokenable_type, :string
-    add_index :access_tokens, [:tokenable_id, :tokenable_type]
+    add_index :tokens, [:tokenable_id, :tokenable_type]
   end
 end

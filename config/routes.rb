@@ -12,7 +12,19 @@ Rails.application.routes.draw do
             patch :reset_password
           end
         end
+        resources :drivers do
+          collection do
+            patch :inactive
+            patch :forgot_password
+            patch :reset_password
+          end
+        end
         resource :sessions do
+        end
+        resources :cars do
+          collection do
+            post :create_car
+          end
         end
       end
     end

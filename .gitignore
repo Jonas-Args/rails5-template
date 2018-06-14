@@ -24,3 +24,5 @@ config/*.yml
 
 # Ignore application configuration
 /config/application.yml
+
+echo "coverage" >> .gitignore

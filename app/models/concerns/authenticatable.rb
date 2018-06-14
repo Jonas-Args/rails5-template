@@ -6,7 +6,7 @@ module Authenticatable
   module ClassMethods
 
     def find_by_valid_token request_details
-      access_token = Token.find_by(token: request_details[:token])
+      access_token = Token.find_by(token: request_details[:access_token])
       return  nil unless !access_token.nil? && !access_token.user.nil?
       user = access_token.user
       user.current_token = request_details[:access_token]

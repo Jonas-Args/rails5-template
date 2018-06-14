@@ -8,7 +8,7 @@ module Authenticator
   def request_details
     @request_details ||=
       {
-        token: request.headers['AccessToken'] || params[:access_token],
+        access_token: request.headers['AccessToken'] || params[:access_token],
         user_id: request.headers['UserId'] || params[:user_id]
       }
   end

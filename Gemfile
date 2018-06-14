@@ -38,6 +38,9 @@ gem "api-versions", "~> 1.0"
 gem "figaro"
 gem "sidekiq"
 gem "sidekiq-status"
+gem "rolify"
+gem "multi_json"
+gem "oj"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -56,8 +59,13 @@ end
 
 group :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'simplecov', require: false
+  gem 'faker'
+  gem 'shoulda'
   gem 'rspec-rails'
+  gem 'database_cleaner'
   gem "rspec_junit_formatter"
+  gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -6,15 +6,14 @@ module Sessions
     end
 
     def basic_details
-      access_token_details
-      .merge(
+
         {
           user: {
-            email: @current_user.email,
-            username: @current_user.user_name,
-          }
+                    email: @current_user.email,
+                    username: @current_user.user_name,
+                    is_active: @current_user.is_active
+                  }.merge(access_token_details)
         }
-      )
     end
 
       def access_token_details

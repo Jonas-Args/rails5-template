@@ -1,21 +1,24 @@
 class User < ApplicationRecord
+  rolify
   include Authenticatable
   include TokenProcessor
 
   attr_accessor :current_token
 
-  validates :email, uniqueness: true, presence: true, email: true
-  validates :user_name, presence: true
+  validates :email, presence: true, uniqueness: true,  email: true
+  validates :user_name, presence:true
 
-  has_many :access_tokens,  class_name: "Token::AccessToken", :dependent => :destroy
-  has_many :invite_tokens,  class_name: "Token::InviteToken", :dependent => :destroy
-  has_many :forgot_tokens,  class_name: "Token::ForgotToken", :dependent => :destroy
+  has_many :access_tokens,  class_name: "Tokens::AccessToken", :dependent => :destroy
+  has_many :invite_tokens,  class_name: "Tokens::InviteToken", :dependent => :destroy
+  has_many :forgot_tokens,  class_name: "Tokens::ForgotToken", :dependent => :destroy
 
-  after_create :send_welcome_email
+  has_many :cars, foreign_key: "driver_id", :dependent => :destroy
+
+  # after_create :send_welcome_email
 
   def self.find_by_credentials(credentials)
     user = find_by(email: credentials.fetch(:email, '')) if credentials[:email].present?
-  user = find_by(username: credentials.fetch(:username, '')) if credentials[:username].present?
+    user = find_by(username: credentials.fetch(:username, '')) if credentials[:username].present?
     return false unless user.present? && user.valid_password?(credentials.fetch(:password, ''))
     user
   end
