@@ -28,7 +28,7 @@ Rails.application.routes.draw do
         end
       end
     end
-    root to: "application#index"
   end
   mount Sidekiq::Web => '/sidekiq'
+  root to: "application#index"
 end
