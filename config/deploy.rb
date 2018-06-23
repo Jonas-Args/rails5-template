@@ -9,7 +9,7 @@ set :bundle_without, [:development, :test]
 set :rvm_ruby_version, '2.4.1@renty'
 set :rails_env, 'production'
 
-set :linked_files, %w{config/database.yml config/application.yml config/secrets.yml}
+set :linked_files, %w{config/database.yml config/application.yml config/secrets.yml config/redis.yml config/sidekiq.yml config/cable.yml}
 
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets}
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }

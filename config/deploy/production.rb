@@ -1,7 +1,7 @@
 
 set :keep_releases, 1
-set :branch, 'master'
-set :deploy_to, '/home/deploy/api/staging'
+set :branch, 'listing'
+set :deploy_to, '/home/deploy/api/production'
 set :rvm_type, :user
 
 server '10.0.1.170',
